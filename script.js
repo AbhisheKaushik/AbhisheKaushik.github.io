@@ -35,6 +35,11 @@ function XO() {
         ++turnCount;
     }
     makeBoard();
+    if (hasOwon(board))
+        window.alert("YOU WON!!");
+    else if (isFull(board))
+        window.alert("DRAW!!");
+    makeBoard();
 }
 for (let i = 0; i < boxArray.length; ++i) {
     boxArray[i].addEventListener('click', XO);
@@ -184,14 +189,12 @@ function turnBoard(choiceBoard) {
     }
 }
 function AIplay() {
-    minimax(board,0,true);
+    minimax(board, 0, true);
     turnBoard(choiceBoard);
-    if(hasXwon(board))
+    if (hasXwon(board))
         window.alert("AI won!!");
-    else if(isFull(board))
+    else if (isFull(board))
         window.alert("DRAW!!");
-    else if(hasOwon(board))
-        window.alert("YOU WON!!");
 }
 const AI = document.getElementById("AI");
-AI.addEventListener('click',AIplay);
+AI.addEventListener('click', AIplay);
